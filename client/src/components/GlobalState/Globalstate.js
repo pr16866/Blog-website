@@ -1,7 +1,17 @@
 import React from "react";
 import { createGlobalState } from "react-hooks-global-state";
 
-const initialState = { Authenticated:"",Registered:true,profile:"",flagCoomment:false,followerflag:true,showFollowers:false,notificationFlag:false,Notification:"",imageUrl:"http://localhost:3001/images/"};
+const initialState = {
+  Authenticated: "",
+  Registered: true,
+  profile: "",
+  flagCoomment: false,
+  followerflag: true,
+  showFollowers: false,
+  notificationFlag: false,
+  Notification: "",
+  imageUrl: "https://prt003-blog.herokuapp.com/images",
+};
 const { useGlobalState, setGlobalState } =
   createGlobalState(initialState);
 // console.log(useGlobalState);
