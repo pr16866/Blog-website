@@ -101,7 +101,7 @@ export default function EditProfile({ profile }) {
     about: profile.about ? profile.about : "",
     imageId: profile.imageId ? profile.imageId : "",
   };
-  const [loadAnimation, setLoadAnimation] = useState(false);
+  const [loadAnimation, setLoadAnimation] = useState(null);
   const [Data, setData] = useState(initialData);
   const [File, setFile] = useState("");
   const { mainBox, textfield, button, imageBox, hover, file, toolTip } =
@@ -132,7 +132,7 @@ export default function EditProfile({ profile }) {
     // image
   } = Data;
 
-  // console.log(formData);
+  
 
   //=========>> * * * Code for making image into base64 start * * * <<=========
 
@@ -169,7 +169,7 @@ export default function EditProfile({ profile }) {
   const UpdateData = async (e) => {
     let formData;
     e.preventDefault();
-
+setLoadAnimation(true);
     let imageRes;
 
     if (File) {
@@ -180,11 +180,11 @@ export default function EditProfile({ profile }) {
     }
 
     let imageLink = imageRes ? imageRes.data : "";
-    setLoadAnimation(true);
+    // setLoadAnimation(true);
     let res = await updateProfile(userid, Data, imageLink);
     // console.log(res.data);
     if (res.data) {
-      setLoadAnimation(false);
+      // setLoadAnimation(false);
       setUser(res.data);
       alert("Profile updated sucessfull");
       history.push(`/profile/${userid}`);

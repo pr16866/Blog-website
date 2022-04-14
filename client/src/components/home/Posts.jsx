@@ -18,9 +18,10 @@ useEffect(() => {
 }, [search])
     // console.log(search);
     const loadfun = async () => {
-      
+        console.log(search);
         let req = await getpost(search);
-        // console.log(req.data);
+
+        console.log(req);
         setflag(false);
         setpost(req.data);
        

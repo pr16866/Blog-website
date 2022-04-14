@@ -213,7 +213,8 @@ formData.imageUrl = req.query.data ? req.query.data : req.body.picture;
 
 export const updateImage = async(req,res) => {
   try {
-    console.log(req.body);
+    // console.log();
+    // console.log(req.body);
     res.send(req.body);
     
   } catch (error) {

@@ -106,7 +106,7 @@ const [imageurl, setImageUrl] = useGlobalState("imageUrl");
   //    };
   // };
 
-  const [loadAnimation, setLoadAnimation] = useState(false);
+  const [loadAnimation, setLoadAnimation] = useState(null);
 
   const update = async () => {
     let formData;

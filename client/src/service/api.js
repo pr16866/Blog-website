@@ -1,18 +1,19 @@
 import axios from "axios";
 // import post from "../../../schema/post";
 
+let api = "";
 export const createpost = async (post,data) => {
   try {
     console.log(post,data);
-    return await axios.post(`/create/?data=${data}`,post);
+    return await axios.post(`${api}/create/?data=${data}`,post);
   } catch (er) {
     console.log(er);
   }
 };
 export const createImage = async (formData) => {
   try {
-    // console.log(post);
-    return await axios.post("/sendImage", formData);
+    
+    return await axios.post(`${api}/sendImage`, formData);
   } catch (er) {
     console.log(er);
   }
@@ -20,15 +21,17 @@ export const createImage = async (formData) => {
 
 export const getpost = async (search) => {
   try {
-    // console.log(search);
-    return await axios.get(`/create${search}`);
+   
+    let var1 = await axios.get(`${api}/create${search}`);
+    
+    return var1;
   } catch (er) {
     console.log(er);
   }
 };
 export const detailview = async (id) => {
   try {
-    return await axios.get(`/detailview/${id}`);
+    return await axios.get(`${api}/detailview/${id}`);
   } catch (er) {
     console.log(er);
   }
@@ -36,17 +39,16 @@ export const detailview = async (id) => {
 
 export const updated = async (id, post,data) => {
   try {
-    return await axios.post(`/update/${id}/?data=${data}`, post);
+    return await axios.post(`${api}/update/${id}/?data=${data}`, post);
   } catch (er) {
     console.log(er);
   }
 };
 
 
-
 export const deletblog = async (id) => {
   try {
-    return await axios.delete(`/delet/${id}`);
+    return await axios.delete(`${api}/delet/${id}`);
   } catch (er) {
     console.log(er);
   }
@@ -55,22 +57,22 @@ export const deletblog = async (id) => {
 
 export const uploadFile = async (data, config) => {
   try {
-    return await axios.post("/file/upload", data, config);
+    return await axios.post(`${api}/file/upload`, data, config);
   } catch (er) {
     console.log(er);
   }
 };
 export const postcomment = async (data) => {
   try {
-    return await axios.post("/comments", data);
+    return await axios.post(`${api}/comments`, data);
   } catch (er) {
     console.log(er);
   }
 };
 export const getcomment = async (id) => {
   try {
-    // console.log(id);
-    return await axios.get(`/comment/${id}`);
+    
+    return await axios.get(`${api}/comment/${id}`);
   } catch (er) {
     console.log(er);
   }
@@ -78,7 +80,7 @@ export const getcomment = async (id) => {
 
 export const deleatcmnt = async (id) => {
   try {
-    return await axios.delete(`/deleate/${id}`);
+    return await axios.delete(`${api}/deleate/${id}`);
   } catch (er) {
     console.log(er);
   }
@@ -89,7 +91,7 @@ export const deleatcmnt = async (id) => {
 export const addProfile = async (profileData) => {
   try {
     // console.log(profileData);
-    return await axios.post("/addProfile", profileData);
+    return await axios.post(`${api}/addProfile`, profileData);
   } catch (er) {
     console.log(er);
   }
@@ -98,8 +100,8 @@ export const addProfile = async (profileData) => {
 
 export const getProfile = async (data) => {
   try {
-    console.log(data);
-    return await axios.get(`/getProfile/${data}`);
+    // console.log(data);
+    return await axios.get(`${api}/getProfile/${data}`);
   } catch (er) {
     console.log(er);
   }
@@ -107,7 +109,7 @@ export const getProfile = async (data) => {
 
 export const getAllProfile = async () => {
   try {
-     return await axios.get(`/getallProfile`);
+     return await axios.get(`${api}/getallProfile`);
   } catch (error) {
     console.log(error);
   }
@@ -117,7 +119,10 @@ export const getAllProfile = async () => {
 export const updateProfile = async (userid, profile,data) => {
   try {
 
-    return await axios.post(`/updateProfile/${userid}/?data=${data}`, profile);
+    return await axios.post(
+      `${api}/updateProfile/${userid}/?data=${data}`,
+      profile
+    );
     
   } catch (er) {
     console.log(er);
@@ -129,7 +134,7 @@ export const updateProfile = async (userid, profile,data) => {
 export const addFollowing = async(userid,profileId) => {
   try {
     // console.log(userid)
-    return await axios.get(`/addFollowing/${userid}/${profileId}`); 
+    return await axios.get(`${api}/addFollowing/${userid}/${profileId}`); 
   }
   catch (er) {
     console.log(er);
@@ -140,7 +145,7 @@ export const addFollowing = async(userid,profileId) => {
 export const removeFollowing = async (userid, profileId) => {
   try {
     // console.log(userid);
-    return await axios.get(`/removeFollowing/${userid}/${profileId}`);
+    return await axios.get(`${api}/removeFollowing/${userid}/${profileId}`);
   } catch (er) {
     console.log(er);
   }
@@ -149,7 +154,7 @@ export const removeFollowing = async (userid, profileId) => {
 export const getAllFollowers = async (userid) => {
   try {
    
-    return await axios.get(`/getAllFollowers/${userid}`);
+    return await axios.get(`${api}/getAllFollowers/${userid}`);
   } catch (er) {
     console.log(er);
   }
@@ -157,7 +162,7 @@ export const getAllFollowers = async (userid) => {
 export const getAllFollowings = async (userid) => {
   try {
 
-    return await axios.get(`/getAllFollowings/${userid}`);
+    return await axios.get(`${api}/getAllFollowings/${userid}`);
 
   } catch (er) {
     console.log(er);
@@ -167,7 +172,7 @@ export const getAllFollowings = async (userid) => {
 export const filterFollowers = async (userid) => {
   try {
     console.log(userid);
-    return await axios.get(`/filterFollowers/${userid}`);
+    return await axios.get(`${api}/filterFollowers/${userid}`);
   } catch (er) {
     console.log(er);
   }
@@ -175,7 +180,7 @@ export const filterFollowers = async (userid) => {
 
 export const updadteImage = async (baseData) => {
   try {
-    return await axios.post(`/updateImage`,baseData);
+    return await axios.post(`${api}/updateImage`, baseData);
   } catch (error) {
     console.log(error);
   }
@@ -185,7 +190,9 @@ export const sendNoti = async (userid, message,blogId) => {
   
   try {
 
-    return await axios.post(`/sendNotification/?userid=${userid}&message=${message}&blogId=${blogId}`);
+    return await axios.post(
+      `${api}/sendNotification/?userid=${userid}&message=${message}&blogId=${blogId}`
+    );
     
   } catch (error) {
     console.log(error);
@@ -194,7 +201,7 @@ export const sendNoti = async (userid, message,blogId) => {
 
 export const Unseen = async(userid) => {
   try {
-    return await axios.get(`/unseen/?userid=${userid}`);
+    return await axios.get(`${api}/unseen/?userid=${userid}`);
   } catch (error) {
     console.log(error);
   }

@@ -10,7 +10,8 @@ const initialState = {
   showFollowers: false,
   notificationFlag: false,
   Notification: "",
-  imageUrl: "https://prt003-blog.herokuapp.com/images/",
+  imageUrl: "",
+  // imageUrl: "https://prt003-blog.herokuapp.com/images/",
   // https://prt003-blog.herokuapp.com/images/1649769873767p1.png
 };
 const { useGlobalState, setGlobalState } =

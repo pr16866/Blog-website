@@ -140,33 +140,26 @@ export default function CreateBlog() {
   // };
 
 // ===========>>end<<===============
-  const [loadAnimation, setLoadAnimation] = useState(false);
+  const [loadAnimation, setLoadAnimation] = useState(null);
 
   const publish = async (e) => {
     let formData;
+      setLoadAnimation(true);
     e.preventDefault();
-
     let imageRes;
-
     if (previewFile) {
       formData = new FormData();
 formData.append("file", previewFile);
       formData.append("fileName", previewFile.Name);
       imageRes = await createImage(formData);
     }
-
-
-    setLoadAnimation(true);
-   
-
-    
+    // setLoadAnimation(true);
     let imageLink = imageRes ? imageRes.data : "";
-    
     let req = await createpost(post, imageLink);
     setLoadAnimation(false);
     alert(req.data.message);
     history.push("/");
-    console.log(req.data);
+    // console.log(req.data);
     sendNotification(req.data.response[0]._id);
   };
 

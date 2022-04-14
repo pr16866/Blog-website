@@ -17,32 +17,31 @@ cloud.config({
 export const createpost = async(req, res) => {
    
     try {
+      const var1 = req.body;
+        //  console.log(req.query.data)
+      if (req.query.data) {
+        var1.picture = req.query.data;
+      }
+      let response = await post.insertMany([var1]);
 
-        const var1 = req.body;
-   
-        if (req.query.data) {
-          var1.picture = req.query.data;
-        }     
- let response = await post.insertMany([var1]);
-        
-        res.status(200).send({
-            message: "Blog is published",
-            response
-        });
+      res.status(200).send({
+        message: "Blog is published",
+        response,
+      });
     } catch (er) {
         res.status(500).send({ message: "somethig error in publising your blog" });
+        console.log(er);
    }
 }
+
 
 export const createImage = async(req,res) => {
     try {
         // console.log(req.file);
-
-        // console.log(req.body);
-        // let link = `http://localhost:3001/images/${req.file.filename}`;
-        // console.log(link);
-        res.send(req.file.filename);
-        // res.render()
+        let response = await cloudinary.uploader.upload(req.file.path)
+          console.log(response);
+    //   res.send(req.file.filename);
+        res.send(response.url);
     } catch (error) {
         console.log(error);
     }
@@ -59,23 +58,33 @@ export const sendText = async (req, res) => {
 export const updatepost = async(req, res) => {
 
     try {
-
+        console.log(req.query.data, req.params.id);
         const var1 = req.body;
-        var1.picture = req.query.data?req.query.data:req.body.picture;
-      let response;
-          response = await post.findByIdAndUpdate(req.params.id, { $set: var1 });
-        // console.log(var1);
+        var1.picture = req.query.data ? req.query.data : req.body.picture;
+        console.log(var1)
+
+        let response = await post.findByIdAndUpdate(
+          req.params.id,
+          {
+            $set: var1,
+          },
+          { new: true }
+        );
+        console.log(response);
       res.status(200).send(response);
     } catch (er) {
         res.status(500).send({ message: "somethig error in publising your blog" });
    }
 }
 
+
 export const gatepost = async(req, res) => {
     
     let allPost;
     try {
-         allPost = await post.find(req.query);
+        // console.log(req.query);
+        allPost = await post.find(req.query);
+                                                                 
       res.status(200).send(allPost.reverse());
     } catch (er) {
         res.status(500).send({message:"error"},er );
