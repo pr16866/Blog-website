@@ -43,9 +43,11 @@ const style = makeStyles((theme) => ({
     cursor: "pointer",
   },
   heading: {
-    fontSize: 30,
+    fontSize: "25px",
     fontWeight: 600,
+    color: "#595959",
     textAlign: "center",
+
     margin: "50px 0 15px 0",
     textTransform: "capitalize",
   },
@@ -114,18 +116,21 @@ const style = makeStyles((theme) => ({
       // color: "#6301ed",
       cursor: "pointer",
       margin: "6px 0",
-      wordSpacing:"5px",
+      wordSpacing: "5px",
       "&:hover": {
         color: "black",
-        '&.allFollowers': {
+        "&.allFollowers": {
           color: "red",
-          background:"red",
+          background: "red",
         },
       },
     },
   },
   allFollowers: {
     display: "none",
+  },
+  detail: {
+    color: "#595959",
   },
 }));
 
@@ -266,7 +271,7 @@ export default function DetailView() {
           ) : (
             ""
           )}
-          <Typography className={classes.heading}>{title}</Typography>
+          {/* <Typography className={classes.heading}>{title}</Typography> */}
           <Box className={classes.author}>
             <Box className={classes.authorBox}>
               <Box className={classes.nameAndImage}>
@@ -274,17 +279,13 @@ export default function DetailView() {
                   <img
                     src={
                       imageUrl
-                        ? imageurl+imageUrl
+                        ? imageurl + imageUrl
                         : "https://static.thenounproject.com/png/12017-200.png"
                     }
                     className={classes.AuthorImage}
                     alt=""
                     onClick={() => getProfileCard()}
                   />
-
-                  {/* <div className="card">
-                    <ProfileCardWrapper profileData={profileData} />
-                  </div> */}
                 </Box>
                 <Box className={classes.AuthorName}>
                   <Typography
@@ -343,10 +344,10 @@ export default function DetailView() {
             </Box>
 
             <Typography style={{ marginLeft: "auto" }}>
-            
               {new Date(date).toDateString()}
             </Typography>
           </Box>
+          <Typography className={classes.heading}>{title}</Typography>
           <br />
           <Typography className={classes.detail}>{description}</Typography>
           {/* <ProfileButton/> */}

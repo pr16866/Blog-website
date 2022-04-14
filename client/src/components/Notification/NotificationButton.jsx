@@ -13,7 +13,7 @@ export default function NotificationButton({ notification }) {
     <div>
       <div className="hamburger-menu">
         <div className="notiNo">
-          <Chat style={{ fontSize: "2.5rem" }} />
+          <Chat style={{ fontSize: "30px",marginTop:"10px" }} />
         </div>
         <div className="noNotification">
           <Typography

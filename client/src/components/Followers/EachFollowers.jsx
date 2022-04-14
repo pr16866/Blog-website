@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { useGlobalState } from '../GlobalState/Globalstate';
 
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   component: {
     marginTop: 18,
     background: "#F5F5F5",
@@ -27,15 +27,21 @@ const useStyles = makeStyles({
     gap: "20px",
     flexDirection: "row",
     alignItems: "center",
-    flexWrap:"wrap",
+    // flexWrap: "wrap",
     justifyContent: "space-between",
-    textAlign:"center",
+    textAlign: "center",
+    [theme.breakpoints.down("xs")]: {
+      gap: 0,
+    },
   },
   name: {
     fontWeight: 500,
-    letterSpacing:"2px",
+    letterSpacing: "2px",
     fontSize: 18,
-        color: "#666",
+    color: "#666",
+    [theme.breakpoints.down("xs")]: {
+      fontSize: 14,
+    },
   },
   date: {
     fontSize: 14,
@@ -52,7 +58,7 @@ const useStyles = makeStyles({
   coment: {
     textAlign: "center",
   },
-});
+}));
 export default function EachFollowers({ followers }) {
   const [imageurl, setImageUrl] = useGlobalState("imageUrl");
   const { name, imageUrl, address, userid, followersUserId } = followers;

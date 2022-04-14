@@ -116,7 +116,8 @@ export default function CustomizedDialogs() {
         <BootstrapDialogTitle
           id="customized-dialog-title"
           onClose={handleClose}>
-          FOLLOWERS OF <span style={{ color: "#666" }}>@{params.username}</span>
+          FOLLOWERS
+          {/* <span style={{ color: "#666" }}>@{params.username}</span> */}
         </BootstrapDialogTitle>
 
         <DialogContent sx={{ borderTop: "1px solid #666" }}>

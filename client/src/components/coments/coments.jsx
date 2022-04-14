@@ -9,7 +9,8 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 const useStyles = makeStyles({
   component: {
-    marginTop: 18,
+    marginTop: 10,
+    marginBottom:-20,
     background: "#F5F5F5",
     // border:"1px solid grey",
     padding: 5,
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
   },
   container: {
     display: "flex",
-
+    // marginTop: 10,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -34,9 +35,9 @@ const useStyles = makeStyles({
     cursor: "pointer",
     color: "#878787",
     transition: "0.5s",
-    '&:hover': {
+    "&:hover": {
       color: "black",
-    }
+    },
   },
   date: {
     fontSize: 14,
@@ -105,7 +106,7 @@ else {
               onClick={viewProfile}
             />
             <Typography className={classes.name} onClick={viewProfile}>
-              {" "}
+              
               {name}
             </Typography>
             <Typography className={classes.date}>
@@ -123,5 +124,5 @@ else {
           </Typography>
         </Box>
       </>
-    );
+    )
 }

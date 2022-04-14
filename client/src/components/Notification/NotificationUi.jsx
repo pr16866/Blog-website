@@ -129,21 +129,7 @@ export default function NotificationUi({ notification }) {
           sx={{
             borderTop: "1px solid #666",
           }}>
-          <TextField
-            id="fullWidth"
-            placeholder="@username"
-            variant="filled"
-            sx={{
-              width: 500,
-              maxWidth: "100%",
-              border: "none",
-              pt: 1,
-              mt: 2,
-              outline: "none",
-            }}
-            //
-            // onChange={handleChange}
-          />
+          
 
           {notification.map((item, index) => {
             

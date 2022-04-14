@@ -5,7 +5,7 @@ import Home from "./components/home/home";
 import Nav from "./components/nav";
 import DetailView from "./components/post/detailView";
 import "./css/post.css";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 import CreateBlog from "./components/create/createBlog";
 import EditBlog from "./components/create/editBlog";
 import AuthenticationMain from "./components/Authentication/AuthenticationMain";
@@ -26,7 +26,7 @@ function App() {
   const [profile, setProfile] = useGlobalState("profile");
   const [registered, setRegistered] = useGlobalState("Registered");
 
-
+  const history = useHistory();
   useEffect(() => {
     try {
       auth.onAuthStateChanged((authUser) => {
@@ -57,9 +57,10 @@ function App() {
   const getUser = async () => {
     const response = await getProfile( `?email=${authenticated}`);
     setProfile(response.data);
-     response.data
-       ? alert("we got the user with this profile")
-       : alert("user with this email address is not present in our database");
+    //  response.data
+    //    ? alert("we got the user with this profile")
+    //    : alert("user with this email address is not present in our database");
+    // history.push("/");
   };
  
  
@@ -97,8 +98,12 @@ function App() {
             <Route exact path="*" component={NotFound} />
           </Switch>
           <p
-            style={{ background: "blue", color: "white", textAlign: "center" }}>
-            Copyright :- designed and developed by Piyush Thakur
+            style={{
+              background: "#3f51b5",
+              color: "white",
+              textAlign: "center",
+            }}>
+            Copyright © designed and developed by Piyush Thakur
           </p>
         </Box>
       </Router>

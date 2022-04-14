@@ -11,7 +11,7 @@ import { AirlineSeatFlatAngledSharp } from "@material-ui/icons";
 
 const style = makeStyles({
   container: {
-    marginTop: 100,
+    marginTop: 50,
     display: "flex",
     "& > *": {
       // padding: '10px '

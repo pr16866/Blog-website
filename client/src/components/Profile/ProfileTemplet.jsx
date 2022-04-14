@@ -378,6 +378,13 @@ const Profiletemplet = styled.div`
       text-align: center;
       gap: 20px;
       align-items: center;
+      justify-content: center;
+    }
+    .border{
+      height: 20px;
+      width: 0.4px;
+      color: black;
+      /* border: 1px solid black; */
     }
   }
 
@@ -393,7 +400,8 @@ const Profiletemplet = styled.div`
 
     .hamburger-menu {
       width: 16px;
-      height: 12px;
+      /* height: 12px; */
+      margin-top: 5px;
       top: 1.1rem;
       left: 1.5rem;
     }
@@ -582,7 +590,7 @@ export default function ProfileTemplet({ profile, post, check}) {
                 )}
                 <Link className="mail" to={`/update_profile/${userid}`}>
                   <Tooltip title="Edit Profile" arrow>
-                    <Edit style={{ fontSize: "2.5rem" }} />
+                    <Edit style={{ fontSize: "30px" }} />
                   </Tooltip>
                 </Link>
               </>
@@ -647,7 +655,13 @@ export default function ProfileTemplet({ profile, post, check}) {
                       <div className="follow">Follow</div>
                     </Tooltip>
                   ) : (
-                    <div className="follow" onClick={Authenticated? check:()=>alert("Please login first")}>
+                    <div
+                      className="follow"
+                      onClick={
+                        Authenticated
+                          ? check
+                          : () => alert("Please login first")
+                      }>
                       {followFlag ? "Follow" : "Unfollow"}
                     </div>
                   )}
@@ -668,9 +682,11 @@ export default function ProfileTemplet({ profile, post, check}) {
                 </h3>
                 <h3 className="number-title">Posts</h3>
               </div>
+              <div className="border"></div>
               <div className="follower">
                 <FollowingMain />
               </div>
+              <div className="border"></div>
               <div>
                 <FollowersMain />
               </div>
